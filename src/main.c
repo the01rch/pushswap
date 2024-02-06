@@ -6,13 +6,12 @@
 /*   By: redrouic <redrouic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/04 19:24:23 by redrouic          #+#    #+#             */
-/*   Updated: 2024/02/06 18:40:02 by redrouic         ###   ########.fr       */
+/*   Updated: 2024/02/06 20:26:18 by redrouic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 #include <stdlib.h>
-#include <stdio.h>
 
 #define MAX_INT 2147483647
 #define MAX_NEG -2147483648
@@ -31,18 +30,15 @@ long long int	ft_atoi(const char *nptr)
 {
 	long long int	b;
 	int				sign;
-	int				nb_sign;
 
 	b = 0;
 	sign = 1;
-	nb_sign = 0;
 	while ((*nptr >= 9 && *nptr <= 13) || *nptr == 32)
 		nptr++;
 	if (*nptr == '+' || *nptr == '-')
 	{
 		if (*nptr == '-')
 			sign *= -1;
-		nb_sign++;
 		nptr++;
 	}
 	while (*nptr >= '0' && *nptr <= '9')
@@ -57,12 +53,37 @@ int	is_digit(char *str)
 {
 	while (*str)
 	{
-		if (*str >= '0' && *str <= '9') 
+		if ((*str >= '0' && *str <= '9') || *str == '-' || *str == '+') 
 			(void)str;
 		else
 			return (0);
 		str++;
 	}
+	return (1);
+}
+
+int	sign_valid(int ac, char **av)
+{
+	int	sign;
+	int	x;
+	int	y;
+
+	sign = 0;
+	x = 0;
+	y = 1;
+	while (y < ac)
+	{
+		while (av[y][x])
+		{
+			if (av[y][x] == '-' || av[y][x] == '+')
+				sign++;
+			x++;
+		}
+		y++;
+		x = 0;
+	}
+	if (sign > 1)
+		return (0);
 	return (1);
 }
 
@@ -86,6 +107,8 @@ int	gest_err(int ac, char **av)
 	int				i;
 
 	i = 1;
+	if (!sign_valid(ac, av))
+		return (1);
 	while (i < ac)		
 	{
 		if (is_digit(av[i]) == 0)
