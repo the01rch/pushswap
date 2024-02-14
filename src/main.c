@@ -6,7 +6,7 @@
 /*   By: redrouic <redrouic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/04 19:24:23 by redrouic          #+#    #+#             */
-/*   Updated: 2024/02/06 20:35:27 by redrouic         ###   ########.fr       */
+/*   Updated: 2024/02/14 18:19:28 by redrouic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,5 +95,6 @@ int	main(int ac, char **av)
 		write(2, "Error\n", 6);
 		return (0);
 	}
+	print_stack(init_stack(ac, av));
 	return (0);
 }

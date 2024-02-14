@@ -6,9 +6,28 @@
 /*   By: redrouic <redrouic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 20:32:01 by redrouic          #+#    #+#             */
-/*   Updated: 2024/02/06 20:46:10 by redrouic         ###   ########.fr       */
+/*   Updated: 2024/02/14 18:04:04 by redrouic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include <unistd.h>
+
+void	ft_putchar(char c)
+{
+	write(1, &c, 1);
+}
+
+void	ft_putnbr(int n)
+{
+	if (n < 0)
+	{
+		ft_putchar('-');
+		n = -n;
+	}
+	if (n > 9)
+		ft_putnbr(n / 10);
+	ft_putchar(n % 10 + '0');
+}
 
 int	ft_strlen(char *str)
 {
@@ -42,5 +61,4 @@ long long int	ft_atoi(const char *nptr)
 	}
 	return (b * sign);
 }
-
 
