@@ -6,7 +6,7 @@
 /*   By: redrouic <redrouic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 17:55:44 by redrouic          #+#    #+#             */
-/*   Updated: 2024/02/14 18:18:52 by redrouic         ###   ########.fr       */
+/*   Updated: 2024/02/14 18:59:23 by redrouic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,3 +40,16 @@ void	print_stack(t_stack *stack)
 		stack = stack->next;
 	}
 }	
+
+void	swap(t_stack **stack)
+{
+	t_stack	*tmp;
+
+	if (*stack && (*stack)->next)
+	{
+		tmp = (*stack)->next;
+		(*stack)->next = tmp->next;
+		tmp->next = *stack;
+		*stack = tmp;
+	}
+}
