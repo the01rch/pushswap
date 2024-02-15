@@ -6,24 +6,25 @@
 /*   By: redrouic <redrouic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 16:41:04 by redrouic          #+#    #+#             */
-/*   Updated: 2024/02/14 17:54:31 by redrouic         ###   ########.fr       */
+/*   Updated: 2024/02/15 16:51:41 by redrouic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../icl/pushswap.h"
 
-int *create_arr(int ac, char **av)
+int *create_arr(int size, t_stack *stack)
 {
 	int *new;
 	int	i;
 
-	new = malloc(sizeof(int) * ac - 1);
+	new = malloc(sizeof(int) * size - 1);
 	if (!new)
 		return (0);
-	i = 1;
-	while (i < ac)	
+	i = 0;
+	while (stack)
 	{
-		new[i-1] = ft_atoi((const char *)av[i]);
+		new[i] = stack->data;
+		stack = stack->next;
 		i++;
 	}
 	return (new);	
@@ -53,14 +54,30 @@ void	sort_arr(int *arr, int size)
 	}
 }
 
-int	midpoint(int ac, char **av)
+int	stack_len(t_stack *stack)
+{
+	int	len;
+
+	len = 0;
+	while (stack)
+	{
+		len++;
+		stack = stack->next;
+	}
+	return (len);
+}
+
+int	midpoint(t_stack *stack)
 {
 	int	*new;	
 	int	mid;
+	int	len;
 	
-	new = create_arr(ac, av);
-	sort_arr(new, ac);
-	mid = new[(ac/2) -1];
+	new = NULL;
+	len = stack_len(stack);
+	new = create_arr(len, stack);
+	sort_arr(new, len);
+	mid = new[(len/2)];
 	free(new);	
 	return (mid);
 }

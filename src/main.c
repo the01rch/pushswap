@@ -6,7 +6,7 @@
 /*   By: redrouic <redrouic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/04 19:24:23 by redrouic          #+#    #+#             */
-/*   Updated: 2024/02/14 18:19:28 by redrouic         ###   ########.fr       */
+/*   Updated: 2024/02/15 16:21:45 by redrouic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,9 @@ int	gest_err(int ac, char **av)
 
 int	main(int ac, char **av)
 {
+	t_stack *astack;
+	t_stack *bstack;
+
 	if (ac == 1)
 		return (0);
 	if (gest_err(ac, av) == 1)
@@ -95,6 +98,9 @@ int	main(int ac, char **av)
 		write(2, "Error\n", 6);
 		return (0);
 	}
-	print_stack(init_stack(ac, av));
+	astack = NULL;
+	bstack = NULL;
+	astack = init_astack(ac, av);
+	move2b(astack, bstack);
 	return (0);
 }

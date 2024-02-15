@@ -6,13 +6,14 @@
 #    By: redrouic <redrouic@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/04 19:41:59 by redrouic          #+#    #+#              #
-#    Updated: 2024/02/14 18:14:56 by redrouic         ###   ########.fr        #
+#    Updated: 2024/02/15 15:19:20 by redrouic         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 SRC	=	src/main.c\
 		src/utils.c\
-		src/astack.c
+		src/astack.c\
+		src/midpoint.c\
 
 CC	=	gcc
 

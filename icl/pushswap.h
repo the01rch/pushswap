@@ -6,7 +6,7 @@
 /*   By: redrouic <redrouic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 20:33:05 by redrouic          #+#    #+#             */
-/*   Updated: 2024/02/14 18:17:15 by redrouic         ###   ########.fr       */
+/*   Updated: 2024/02/15 16:22:13 by redrouic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,14 @@ void			ft_putnbr(int n);
 
 void			print_stack(t_stack *stack);
 
-t_stack			*init_stack(int ac, char **av);
+int				midpoint(t_stack *stack);
+
+void			ft_putstr(char *str);
+
+void			move2b(t_stack *astack, t_stack *bstack);
+
+int				stack_len(t_stack *stack);
+
+t_stack			*init_astack(int ac, char **av);
 
 #endif

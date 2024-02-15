@@ -1,0 +1,335 @@
+
+======
+
+pb
+
+bstack=
+data: 2
+
+astack=
+data: 3
+data: 5
+data: 12
+data: 10
+data: 6
+data: 9
+data: 7
+data: 4
+data: 1
+data: 8
+data: 11
+
+======
+
+======
+
+pb
+
+bstack=
+data: 3
+data: 2
+
+astack=
+data: 5
+data: 12
+data: 10
+data: 6
+data: 9
+data: 7
+data: 4
+data: 1
+data: 8
+data: 11
+
+======
+
+======
+
+pb
+
+bstack=
+data: 5
+data: 3
+data: 2
+
+astack=
+data: 12
+data: 10
+data: 6
+data: 9
+data: 7
+data: 4
+data: 1
+data: 8
+data: 11
+
+======
+
+======
+
+ra
+
+bstack=
+data: 5
+data: 3
+data: 2
+
+astack=
+data: 10
+data: 6
+data: 9
+data: 7
+data: 4
+data: 1
+data: 8
+data: 11
+data: 12
+
+======
+
+======
+
+ra
+
+bstack=
+data: 5
+data: 3
+data: 2
+
+astack=
+data: 6
+data: 9
+data: 7
+data: 4
+data: 1
+data: 8
+data: 11
+data: 12
+data: 10
+
+======
+
+======
+
+pb
+midpoint = 9
+
+bstack=
+data: 6
+data: 5
+data: 3
+data: 2
+
+astack=
+data: 9
+data: 7
+data: 4
+data: 1
+data: 8
+data: 11
+data: 12
+data: 10
+
+======
+
+======
+
+ra
+
+bstack=
+data: 6
+data: 5
+data: 3
+data: 2
+
+astack=
+data: 7
+data: 4
+data: 1
+data: 8
+data: 11
+data: 12
+data: 10
+data: 9
+
+======
+
+======
+
+pb
+
+bstack=
+data: 7
+data: 6
+data: 5
+data: 3
+data: 2
+
+astack=
+data: 4
+data: 1
+data: 8
+data: 11
+data: 12
+data: 10
+data: 9
+
+======
+
+======
+
+pb
+
+bstack=
+data: 4
+data: 7
+data: 6
+data: 5
+data: 3
+data: 2
+
+astack=
+data: 1
+data: 8
+data: 11
+data: 12
+data: 10
+data: 9
+
+======
+
+======
+
+pb
+midpoint = 10
+
+bstack=
+data: 1
+data: 4
+data: 7
+data: 6
+data: 5
+data: 3
+data: 2
+
+astack=
+data: 8
+data: 11
+data: 12
+data: 10
+data: 9
+
+======
+
+======
+
+pb
+
+bstack=
+data: 8
+data: 1
+data: 4
+data: 7
+data: 6
+data: 5
+data: 3
+data: 2
+
+astack=
+data: 11
+data: 12
+data: 10
+data: 9
+
+======
+
+======
+
+ra
+
+bstack=
+data: 8
+data: 1
+data: 4
+data: 7
+data: 6
+data: 5
+data: 3
+data: 2
+
+astack=
+data: 12
+data: 10
+data: 9
+data: 11
+
+======
+
+======
+
+ra
+
+bstack=
+data: 8
+data: 1
+data: 4
+data: 7
+data: 6
+data: 5
+data: 3
+data: 2
+
+astack=
+data: 10
+data: 9
+data: 11
+data: 12
+
+======
+
+======
+
+ra
+
+bstack=
+data: 8
+data: 1
+data: 4
+data: 7
+data: 6
+data: 5
+data: 3
+data: 2
+
+astack=
+data: 9
+data: 11
+data: 12
+data: 10
+
+======
+
+======
+
+pb
+midpoint = 11
+
+bstack=
+data: 9
+data: 8
+data: 1
+data: 4
+data: 7
+data: 6
+data: 5
+data: 3
+data: 2
+
+astack=
+data: 11
+data: 12
+data: 10
+
+======
+
+======
