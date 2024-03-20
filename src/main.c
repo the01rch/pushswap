@@ -6,13 +6,13 @@
 /*   By: redrouic <redrouic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/04 19:24:23 by redrouic          #+#    #+#             */
-/*   Updated: 2024/03/14 17:00:02 by redrouic         ###   ########.fr       */
+/*   Updated: 2024/03/16 18:15:10 by redrouic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../icl/pushswap.h"
 
-static int	is_digit(char *str)
+static int	is_format(char *str)
 {
 	while (*str)
 	{
@@ -74,7 +74,7 @@ static int	gest_err(int ac, char **av)
 		return (1);
 	while (i < ac)
 	{
-		if (is_digit(av[i]) == 0)
+		if (is_format(av[i]) == 0)
 			return (1);
 		tmp = ft_atoi(av[i]);
 		if (tmp > MAX_INT || tmp < MAX_NEG)
@@ -101,6 +101,8 @@ int	main(int ac, char **av)
 	astack = NULL;
 	bstack = NULL;
 	astack = init_astack(ac, av);
+	if (is_sorted(astack))
+		return (1);
 	move2b(astack, bstack);
-	return (0);
+	return (1);
 }

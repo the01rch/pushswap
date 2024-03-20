@@ -6,7 +6,7 @@
 /*   By: redrouic <redrouic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 17:55:44 by redrouic          #+#    #+#             */
-/*   Updated: 2024/02/18 01:26:32 by redrouic         ###   ########.fr       */
+/*   Updated: 2024/03/14 17:35:02 by redrouic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,81 +29,6 @@ t_stack	*init_astack(int ac, char **av)
 		i--;
 	}
 	return (astack);
-}
-
-void	print_stack(t_stack *stack)
-{
-	while (stack)
-	{
-		ft_putstr("data: ");
-		ft_putnbr(stack->data);
-		ft_putchar('\n');
-		stack = stack->next;
-	}
-}	
-
-void	sa(t_stack **stack)
-{
-	t_stack	*tmp;
-
-	if (*stack && (*stack)->next)
-	{
-		tmp = (*stack)->next;
-		(*stack)->next = tmp->next;
-		tmp->next = *stack;
-		*stack = tmp;
-	}
-	ft_putstr("sa\n");
-}
-
-void	pb(t_stack **astack, t_stack **bstack)
-{
-	t_stack	*tmp;
-
-	if (*astack)
-	{
-		tmp = *astack;
-		*astack = (*astack)->next;
-		tmp->next = *bstack;
-		*bstack = tmp;
-	}
-	ft_putstr("pb\n");
-}
-
-void	ra(t_stack **stack)
-{
-	t_stack	*tmp;
-	t_stack	*tmp2;
-
-	if (*stack && (*stack)->next)
-	{
-		tmp = *stack;
-		tmp2 = *stack;
-		while (tmp2->next)
-			tmp2 = tmp2->next;
-		*stack = tmp->next;
-		tmp2->next = tmp;
-		tmp->next = NULL;
-	}
-	ft_putstr("ra\n");
-}
-
-void	rra(t_stack **stack)
-{
-	t_stack	*tmp;
-	t_stack	*tmp2;
-
-	if (*stack && (*stack)->next)
-	{
-		tmp = *stack;
-		tmp2 = *stack;
-		while (tmp2->next->next)
-			tmp2 = tmp2->next;
-		tmp2->next->next = tmp;
-		*stack = tmp2->next;
-		tmp2->next = NULL;
-	}
-	ft_putstr("rra\n");
 }
 
 int		is_smallest(t_stack *stack, int value)
@@ -157,6 +82,17 @@ void sort_a(t_stack **astack)
     if ((*astack)->data > (*astack)->next->data)
         sa(astack);
 }
+
+void	print_stack(t_stack *stack)
+{
+	while (stack)
+	{
+		ft_putstr("data: ");
+		ft_putnbr(stack->data);
+		ft_putchar('\n');
+		stack = stack->next;
+	}
+}	
 
 void move2b(t_stack *astack, t_stack *bstack)
 {

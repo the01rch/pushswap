@@ -6,7 +6,7 @@
 /*   By: redrouic <redrouic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 20:33:05 by redrouic          #+#    #+#             */
-/*   Updated: 2024/02/15 16:22:13 by redrouic         ###   ########.fr       */
+/*   Updated: 2024/03/14 17:56:49 by redrouic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,17 @@ void			move2b(t_stack *astack, t_stack *bstack);
 
 int				stack_len(t_stack *stack);
 
+void	sa(t_stack **stack);
+
+void	pb(t_stack **astack, t_stack **bstack);
+
+void	ra(t_stack **stack);
+
+void	rra(t_stack **stack);
+
+int		is_sorted(t_stack *stack);
+
 t_stack			*init_astack(int ac, char **av);
+
 
 #endif
