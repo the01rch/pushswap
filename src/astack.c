@@ -6,7 +6,7 @@
 /*   By: redrouic <redrouic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 17:55:44 by redrouic          #+#    #+#             */
-/*   Updated: 2024/03/14 17:35:02 by redrouic         ###   ########.fr       */
+/*   Updated: 2024/03/29 21:56:06 by redrouic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ t_stack	*init_astack(int ac, char **av)
 	return (astack);
 }
 
-int		is_smallest(t_stack *stack, int value)
+int	is_smallest(t_stack *stack, int value)
 {
 	t_stack	*tmp;
 
@@ -43,7 +43,7 @@ int		is_smallest(t_stack *stack, int value)
 	return (0);
 }
 
-int		is_sorted(t_stack *stack)
+int	is_sorted(t_stack *stack)
 {
 	t_stack	*tmp;
 
@@ -57,10 +57,10 @@ int		is_sorted(t_stack *stack)
 	return (1);
 }
 
-void sort_a(t_stack **astack)
+void	sort_a(t_stack **astack)
 {
-    t_stack *ptr;
-	int smallest;
+    t_stack	*ptr;
+	int		smallest;
 
     if (*astack == NULL || (*astack)->next == NULL)
         return;
@@ -94,7 +94,7 @@ void	print_stack(t_stack *stack)
 	}
 }	
 
-void move2b(t_stack *astack, t_stack *bstack)
+void	move2b(t_stack *astack, t_stack *bstack)
 {
 	int	mid;
 	int	len;

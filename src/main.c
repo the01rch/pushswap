@@ -6,24 +6,11 @@
 /*   By: redrouic <redrouic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/04 19:24:23 by redrouic          #+#    #+#             */
-/*   Updated: 2024/03/16 18:15:10 by redrouic         ###   ########.fr       */
+/*   Updated: 2024/03/29 21:52:19 by redrouic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../icl/pushswap.h"
-
-static int	is_format(char *str)
-{
-	while (*str)
-	{
-		if ((*str >= '0' && *str <= '9') || *str == '-' || *str == '+')
-			(void)str;
-		else
-			return (0);
-		str++;
-	}
-	return (1);
-}
 
 static int	sign_valid(int ac, char **av)
 {
@@ -68,14 +55,21 @@ static int	gest_err(int ac, char **av)
 {
 	long long int	tmp;
 	int				i;
+	int				j;
 
 	i = 1;
+	j = 0;
 	if (!sign_valid(ac, av))
 		return (1);
 	while (i < ac)
 	{
-		if (is_format(av[i]) == 0)
-			return (1);
+		while (av[i][j])
+		{
+			if (!is_format(av[i][j]))
+				return (1);
+			j++;
+		}
+		j = 0;
 		tmp = ft_atoi(av[i]);
 		if (tmp > MAX_INT || tmp < MAX_NEG)
 			return (1);
@@ -90,19 +84,32 @@ int	main(int ac, char **av)
 {
 	t_stack	*astack;
 	t_stack	*bstack;
+	char	**arr;
 
+	if (ac > 2)
+		arr = av;
+	if (ac == 2)
+	{
+		arr = str2arr(av[1]);
+		if (!arr)
+			return (0);
+		ac = count_rows(av[1]);
+	}
 	if (ac == 1)
 		return (0);
-	if (gest_err(ac, av) == 1)
+	if (gest_err(ac, arr))
 	{
 		write(2, "Error\n", 6);
 		return (0);
 	}
 	astack = NULL;
 	bstack = NULL;
-	astack = init_astack(ac, av);
+	astack = init_astack(ac, arr);
 	if (is_sorted(astack))
+	{
+		ft_putstr("OK\n");
 		return (1);
+	}
 	move2b(astack, bstack);
 	return (1);
 }
