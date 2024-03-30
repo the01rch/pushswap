@@ -6,7 +6,7 @@
 /*   By: redrouic <redrouic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 17:55:44 by redrouic          #+#    #+#             */
-/*   Updated: 2024/03/29 21:56:06 by redrouic         ###   ########.fr       */
+/*   Updated: 2024/03/30 18:44:55 by redrouic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,84 +59,87 @@ int	is_sorted(t_stack *stack)
 
 void	sort_a(t_stack **astack)
 {
-    t_stack	*ptr;
+	t_stack	*ptr;
 	int		smallest;
 
-    if (*astack == NULL || (*astack)->next == NULL)
-        return;
-    smallest = (*astack)->data;
-    ptr = *astack;
-    while (ptr != NULL)
-    {
-        if (ptr->data < smallest)
-            smallest = ptr->data;
-        ptr = ptr->next;
-    }
-    while ((*astack)->data != smallest)
-    {
-        if ((*astack)->next->data == smallest)
-            ra(astack);
-        else
-            rra(astack);
-    }
-    if ((*astack)->data > (*astack)->next->data)
-        sa(astack);
+	if (*astack == NULL || (*astack)->next == NULL)
+		return ;
+	smallest = (*astack)->data;
+	ptr = *astack;
+	while (ptr != NULL)
+	{
+		if (ptr->data < smallest)
+			smallest = ptr->data;
+		ptr = ptr->next;
+	}
+	while ((*astack)->data != smallest)
+	{
+		if ((*astack)->next->data == smallest)
+			ra(astack);
+		else
+			rra(astack);
+	}
+	if ((*astack)->data > (*astack)->next->data)
+		sa(astack);
 }
 
+#include <stdio.h>
 void	print_stack(t_stack *stack)
 {
+	int	i;
+
+	i = 0;
 	while (stack)
 	{
-		ft_putstr("data: ");
-		ft_putnbr(stack->data);
-		ft_putchar('\n');
+		printf("%d-data: %d\n", i, stack->data);
 		stack = stack->next;
+		i++;
 	}
-}	
+}
 
 void	move2b(t_stack *astack, t_stack *bstack)
 {
 	int	mid;
 	int	len;
-	int i;
+	int	i;
 
-	mid = midpoint(astack);
 	i = 0;
-	ft_putstr("midpoint = ");
-	ft_putnbr(mid);
-	ft_putchar('\n');
+	mid = midpoint(astack);
 	len = stack_len(astack);
 	while (1)
 	{
-		ft_putstr("\n======\n");
-		ft_putstr("\nbstack=\n");
-		print_stack(bstack);
-		ft_putstr("\nastack=\n");
-		print_stack(astack);
 		if (len == 3 || len == 0)
 			break ;
 		if (astack->data < mid)
 		{
 			pb(&astack, &bstack);
 			i++;
-		} 
+		}
 		else if (astack->data >= mid && is_smallest(astack, mid))
 			rra(&astack);
 		else if (astack->data >= mid)
 			ra(&astack);
-		if (i == len / 2)
+		if ((i == len / 2 && i % 2 == 0) || (i == len / 2 + 1 && i % 2 == 1))
 		{
 			i = 0;
 			mid = midpoint(astack);
-			ft_putstr("midpoint = ");
-			ft_putnbr(mid);
-			ft_putchar('\n');
 			len = stack_len(astack);
 		}
-		//sleep(1);
-		ft_putstr("\n======\n");
+		{
+			i = 0;
+			mid = midpoint(astack);
+			len = stack_len(astack);
+		}
+		{
+			i = 0;
+			mid = midpoint(astack);
+			len = stack_len(astack);
+		}
 	}
 	sort_a(&astack);
-	ft_putstr("\nastack=\n");
+	ft_putstr("astack\n");
 	print_stack(astack);
+	ft_putstr("----------------\n");
+	ft_putstr("bstack\n");
+	print_stack(bstack);
 }

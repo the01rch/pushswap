@@ -6,7 +6,7 @@
 /*   By: redrouic <redrouic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/04 19:24:23 by redrouic          #+#    #+#             */
-/*   Updated: 2024/03/29 21:52:19 by redrouic         ###   ########.fr       */
+/*   Updated: 2024/03/29 22:23:41 by redrouic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,28 +80,11 @@ static int	gest_err(int ac, char **av)
 	return (0);
 }
 
-int	main(int ac, char **av)
+static int	algo(int ac, char **arr)
 {
 	t_stack	*astack;
 	t_stack	*bstack;
-	char	**arr;
 
-	if (ac > 2)
-		arr = av;
-	if (ac == 2)
-	{
-		arr = str2arr(av[1]);
-		if (!arr)
-			return (0);
-		ac = count_rows(av[1]);
-	}
-	if (ac == 1)
-		return (0);
-	if (gest_err(ac, arr))
-	{
-		write(2, "Error\n", 6);
-		return (0);
-	}
 	astack = NULL;
 	bstack = NULL;
 	astack = init_astack(ac, arr);
@@ -111,5 +94,29 @@ int	main(int ac, char **av)
 		return (1);
 	}
 	move2b(astack, bstack);
+	return (0);
+}
+
+int	main(int ac, char **av)
+{
+	char	**arr;
+
+	if (ac > 2)
+		arr = av;
+	if (ac == 1)
+		return (0);
+	if (ac == 2)
+	{
+		arr = str2arr(av[1]);
+		if (!arr)
+			return (0);
+		ac = count_rows(av[1]);
+	}
+	if (gest_err(ac, arr))
+	{
+		write(2, "Error\n", 6);
+		return (0);
+	}
+	algo(ac, arr);
 	return (1);
 }
