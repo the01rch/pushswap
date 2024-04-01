@@ -6,7 +6,7 @@
 /*   By: redrouic <redrouic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/04 19:24:23 by redrouic          #+#    #+#             */
-/*   Updated: 2024/03/29 22:23:41 by redrouic         ###   ########.fr       */
+/*   Updated: 2024/04/01 10:19:07 by redrouic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ static int	gest_err(int ac, char **av)
 	return (0);
 }
 
-static int	algo(int ac, char **arr)
+static void	algo(int ac, char **arr)
 {
 	t_stack	*astack;
 	t_stack	*bstack;
@@ -91,10 +91,12 @@ static int	algo(int ac, char **arr)
 	if (is_sorted(astack))
 	{
 		ft_putstr("OK\n");
-		return (1);
+		return ;
 	}
-	move2b(astack, bstack);
-	return (0);
+	move2b(&astack, &bstack);
+	if (!is_sorted(astack))
+		ra(&astack);
+	return ;
 }
 
 int	main(int ac, char **av)
