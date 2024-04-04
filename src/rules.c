@@ -1,23 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   arules.c                                           :+:      :+:    :+:   */
+/*   rules.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: redrouic <redrouic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 17:32:44 by redrouic          #+#    #+#             */
-/*   Updated: 2024/04/05 01:05:37 by redrouic         ###   ########.fr       */
+/*   Updated: 2024/04/05 01:36:34 by redrouic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../icl/pushswap.h"
 
-static void	print_ab(char c, char *s1, char *s2) 
+static void	print_ab(char c, char *s1, char *s2)
 {
-	if (c == 'a') {
+	if (c == 'a')
+	{
 		ft_putstr(s1);
 		ft_putchar('\n');
-	} else if (c == 'b') {
+	}
+	else if (c == 'b')
+	{
 		ft_putstr(s2);
 		ft_putchar('\n');
 	}
@@ -37,16 +40,16 @@ void	swap(t_stack **stack, char c)
 	print_ab(c, "sa", "sb");
 }
 
-void	push(t_stack **astack, t_stack **bstack, char c)
+void	push(t_stack **stack1, t_stack **stack2, char c)
 {
 	t_stack	*tmp;
 
-	if (*astack)
+	if (*stack1)
 	{
-		tmp = *astack;
-		*astack = (*astack)->next;
-		tmp->next = *bstack;
-		*bstack = tmp;
+		tmp = *stack1;
+		*stack1 = (*stack1)->next;
+		tmp->next = *stack2;
+		*stack2 = tmp;
 	}
 	print_ab(c, "pa", "pb");
 }

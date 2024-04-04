@@ -6,7 +6,7 @@
 /*   By: redrouic <redrouic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 20:33:05 by redrouic          #+#    #+#             */
-/*   Updated: 2024/04/05 01:05:24 by redrouic         ###   ########.fr       */
+/*   Updated: 2024/04/05 01:37:09 by redrouic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int				stack_len(t_stack *stack);
 
 void			swap(t_stack **stack, char c);
 
-void			push(t_stack **astack, t_stack **bstack, char c);
+void			push(t_stack **stack1, t_stack **stack2, char c);
 
 void			rotate(t_stack **stack, char c);
 
