@@ -6,7 +6,7 @@
 /*   By: redrouic <redrouic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 17:55:44 by redrouic          #+#    #+#             */
-/*   Updated: 2024/04/01 10:20:23 by redrouic         ###   ########.fr       */
+/*   Updated: 2024/04/05 01:12:01 by redrouic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ t_stack	*init_astack(int ac, char **av)
 
 	i = ac - 1;
 	astack = NULL;
-	while (i > 0)
+	while (i > -1)
 	{
 		tmp = (t_stack *)malloc(sizeof(t_stack));
 		tmp->data = ft_atoi(av[i]);
@@ -43,7 +43,6 @@ int	is_smallest(t_stack *stack, int value)
 	return (0);
 }
 
-/*
 #include <stdio.h>
 void	print_stack(t_stack *stack)
 {
@@ -57,7 +56,6 @@ void	print_stack(t_stack *stack)
 		i++;
 	}
 }
-*/
 
 int	is_sorted(t_stack *stack)
 {
@@ -86,13 +84,13 @@ void	move2b(t_stack **astack, t_stack **bstack)
 	{
 		if ((*astack)->data < mid)
 		{
-			pb(astack, bstack);
+			push(astack, bstack, 'b');
 			i++;
 		}
 		else if ((*astack)->data >= mid && is_smallest(*astack, mid))
-			rra(astack);
+			rev_rotate(astack, 'a');
 		else if ((*astack)->data >= mid)
-			ra(astack);
+			rotate(astack, 'a');
 		if (i == len / 2)
 		{
 			i = 0;

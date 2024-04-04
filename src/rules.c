@@ -1,18 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rules.c                                            :+:      :+:    :+:   */
+/*   arules.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: redrouic <redrouic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 17:32:44 by redrouic          #+#    #+#             */
-/*   Updated: 2024/03/14 17:33:10 by redrouic         ###   ########.fr       */
+/*   Updated: 2024/04/05 01:05:37 by redrouic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../icl/pushswap.h"
 
-void	sa(t_stack **stack)
+static void	print_ab(char c, char *s1, char *s2) 
+{
+	if (c == 'a') {
+		ft_putstr(s1);
+		ft_putchar('\n');
+	} else if (c == 'b') {
+		ft_putstr(s2);
+		ft_putchar('\n');
+	}
+}
+
+void	swap(t_stack **stack, char c)
 {
 	t_stack	*tmp;
 
@@ -23,10 +34,10 @@ void	sa(t_stack **stack)
 		tmp->next = *stack;
 		*stack = tmp;
 	}
-	ft_putstr("sa\n");
+	print_ab(c, "sa", "sb");
 }
 
-void	pb(t_stack **astack, t_stack **bstack)
+void	push(t_stack **astack, t_stack **bstack, char c)
 {
 	t_stack	*tmp;
 
@@ -37,10 +48,10 @@ void	pb(t_stack **astack, t_stack **bstack)
 		tmp->next = *bstack;
 		*bstack = tmp;
 	}
-	ft_putstr("pb\n");
+	print_ab(c, "pa", "pb");
 }
 
-void	ra(t_stack **stack)
+void	rotate(t_stack **stack, char c)
 {
 	t_stack	*tmp;
 	t_stack	*tmp2;
@@ -55,10 +66,10 @@ void	ra(t_stack **stack)
 		tmp2->next = tmp;
 		tmp->next = NULL;
 	}
-	ft_putstr("ra\n");
+	print_ab(c, "ra", "rb");
 }
 
-void	rra(t_stack **stack)
+void	rev_rotate(t_stack **stack, char c)
 {
 	t_stack	*tmp;
 	t_stack	*tmp2;
@@ -73,5 +84,5 @@ void	rra(t_stack **stack)
 		*stack = tmp2->next;
 		tmp2->next = NULL;
 	}
-	ft_putstr("rra\n");
+	print_ab(c, "rra", "rrb");
 }

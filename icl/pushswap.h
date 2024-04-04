@@ -6,7 +6,7 @@
 /*   By: redrouic <redrouic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 20:33:05 by redrouic          #+#    #+#             */
-/*   Updated: 2024/04/01 10:18:04 by redrouic         ###   ########.fr       */
+/*   Updated: 2024/04/05 01:05:24 by redrouic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,13 +43,13 @@ void			move2b(t_stack **astack, t_stack **bstack);
 
 int				stack_len(t_stack *stack);
 
-void			sa(t_stack **stack);
+void			swap(t_stack **stack, char c);
 
-void			pb(t_stack **astack, t_stack **bstack);
+void			push(t_stack **astack, t_stack **bstack, char c);
 
-void			ra(t_stack **stack);
+void			rotate(t_stack **stack, char c);
 
-void			rra(t_stack **stack);
+void			rev_rotate(t_stack **stack, char c);
 
 int				is_sorted(t_stack *stack);
 
@@ -62,5 +62,7 @@ int				is_format(char c);
 t_stack			*init_astack(int ac, char **av);
 
 void			print_stack(t_stack *stack);	
+
+int				*chunk(int len);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: redrouic <redrouic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/04 19:24:23 by redrouic          #+#    #+#             */
-/*   Updated: 2024/04/01 10:19:07 by redrouic         ###   ########.fr       */
+/*   Updated: 2024/04/05 01:12:31 by redrouic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,11 @@ static void	algo(int ac, char **arr)
 	}
 	move2b(&astack, &bstack);
 	if (!is_sorted(astack))
-		ra(&astack);
+		rotate(&astack, 'a');
+	ft_putstr("astack\n");
+	print_stack(astack);
+	ft_putstr("bstack\n");
+	print_stack(bstack);
 	return ;
 }
 
