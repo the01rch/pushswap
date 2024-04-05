@@ -6,7 +6,7 @@
 /*   By: redrouic <redrouic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/15 14:02:39 by redrouic          #+#    #+#             */
-/*   Updated: 2024/04/04 17:49:00 by redrouic         ###   ########.fr       */
+/*   Updated: 2024/04/05 20:27:57 by redrouic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ int	*chunk(int len)
 	int size;
 	int i;
 
-	size = len / 2;
 	i = 1;
+	size = len / 2;
 	while (size != 1)
 	{
 		size /= 2;
@@ -38,6 +38,7 @@ int	*chunk(int len)
 	return (arr);
 }
 
+/*
 int	is_biggest(t_stack *stack, int mid)
 {
 	t_stack	*tmp;
@@ -80,3 +81,4 @@ void	move2a(t_stack **astack, t_stack **bstack)
 		}
 	}
 }
+*/

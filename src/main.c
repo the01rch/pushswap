@@ -6,7 +6,7 @@
 /*   By: redrouic <redrouic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/04 19:24:23 by redrouic          #+#    #+#             */
-/*   Updated: 2024/04/05 01:12:31 by redrouic         ###   ########.fr       */
+/*   Updated: 2024/04/05 21:20:09 by redrouic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,7 @@ static void	algo(int ac, char **arr)
 {
 	t_stack	*astack;
 	t_stack	*bstack;
+	int		*test;
 
 	astack = NULL;
 	bstack = NULL;
@@ -96,6 +97,32 @@ static void	algo(int ac, char **arr)
 	move2b(&astack, &bstack);
 	if (!is_sorted(astack))
 		rotate(&astack, 'a');
+	ft_putstr("astack\n");
+	print_stack(astack);
+	ft_putstr("bstack\n");
+	print_stack(bstack);
+	test = chunk(ac); 
+	test++;
+	while (*test)
+	{
+		if (*test == 1)
+		{
+			push(&bstack, &astack, 'a');
+			test++;
+			continue ;
+		}
+		if (*test == 2)
+		{
+			if (bstack->data < bstack->next->data)
+				swap(&bstack, 'b');
+			push(&bstack, &astack, 'a');
+			push(&bstack, &astack, 'a');
+			test++;
+			continue ;
+		}
+		if (*test > 2)
+			break ;
+	}
 	ft_putstr("astack\n");
 	print_stack(astack);
 	ft_putstr("bstack\n");
