@@ -6,7 +6,7 @@
 /*   By: redrouic <redrouic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 20:33:05 by redrouic          #+#    #+#             */
-/*   Updated: 2024/04/05 02:29:27 by redrouic         ###   ########.fr       */
+/*   Updated: 2024/04/07 21:28:13 by redrouic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void			ft_putnbr(int n);
 
 void			print_stack(t_stack *stack);
 
-int				midpoint(t_stack *stack);
+int				midpoint(t_stack *stack, int len);
 
 void			ft_putstr(char *str);
 
@@ -59,10 +59,10 @@ int				count_rows(char *str);
 
 int				is_format(char c);
 
-t_stack			*init_astack(int ac, char **av);
-
 void			print_stack(t_stack *stack);	
 
 int				*chunk(int len);
+
+t_stack			*init_astack(int ac, char **av);
 
 #endif

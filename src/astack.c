@@ -6,7 +6,7 @@
 /*   By: redrouic <redrouic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 17:55:44 by redrouic          #+#    #+#             */
-/*   Updated: 2024/04/05 01:12:01 by redrouic         ###   ########.fr       */
+/*   Updated: 2024/04/07 21:29:26 by redrouic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,8 +78,8 @@ void	move2b(t_stack **astack, t_stack **bstack)
 	int	i;
 
 	i = 0;
-	mid = midpoint(*astack);
 	len = stack_len(*astack);
+	mid = midpoint(*astack, len);
 	while (len > 2)
 	{
 		if ((*astack)->data < mid)
@@ -94,8 +94,8 @@ void	move2b(t_stack **astack, t_stack **bstack)
 		if (i == len / 2)
 		{
 			i = 0;
-			mid = midpoint(*astack);
 			len = stack_len(*astack);
+			mid = midpoint(*astack, len);
 		}
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: redrouic <redrouic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 16:41:04 by redrouic          #+#    #+#             */
-/*   Updated: 2024/03/14 17:01:57 by redrouic         ###   ########.fr       */
+/*   Updated: 2024/04/07 21:17:56 by redrouic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,14 +67,12 @@ int	stack_len(t_stack *stack)
 	return (len);
 }
 
-int	midpoint(t_stack *stack)
+int	midpoint(t_stack *stack, int len)
 {
 	int	*new;	
 	int	mid;
-	int	len;
 
 	new = NULL;
-	len = stack_len(stack);
 	new = create_arr(len, stack);
 	sort_arr(new, len);
 	mid = new[(len / 2)];
