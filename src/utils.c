@@ -6,10 +6,11 @@
 /*   By: redrouic <redrouic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 20:32:01 by redrouic          #+#    #+#             */
-/*   Updated: 2024/03/14 17:02:16 by redrouic         ###   ########.fr       */
+/*   Updated: 2024/05/27 15:06:53 by redrouic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "../icl/pushswap.h"
 #include <unistd.h>
 
 void	ft_putchar(char c)
@@ -48,7 +49,7 @@ int	ft_strlen(char *str)
 	return (i);
 }
 
-long long int	ft_atoi(const char *nptr)
+long long int	ft_atoi(const char *nptr, int *error)
 {
 	long long int	b;
 	int				sign;
@@ -66,6 +67,8 @@ long long int	ft_atoi(const char *nptr)
 	while (*nptr >= '0' && *nptr <= '9')
 	{
 		b = b * 10 + (*nptr - 48);
+		if (b > MAX_INT || b < MAX_NEG)
+			*error = 1;
 		nptr++;
 	}
 	return (b * sign);

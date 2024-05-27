@@ -6,7 +6,7 @@
 /*   By: redrouic <redrouic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 20:33:05 by redrouic          #+#    #+#             */
-/*   Updated: 2024/04/07 21:28:13 by redrouic         ###   ########.fr       */
+/*   Updated: 2024/05/27 14:24:25 by redrouic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ typedef struct s_stack
 
 int				ft_strlen(char *str);
 
-long long int	ft_atoi(const char *nptr);
+long long int	ft_atoi(const char *nptr, int *error);
 
 void			ft_putchar(char c);
 
@@ -40,6 +40,8 @@ int				midpoint(t_stack *stack, int len);
 void			ft_putstr(char *str);
 
 void			move2b(t_stack **astack, t_stack **bstack);
+
+void			move2a(t_stack **astack, t_stack **bstack, int len);
 
 int				stack_len(t_stack *stack);
 
@@ -62,6 +64,8 @@ int				is_format(char c);
 void			print_stack(t_stack *stack);	
 
 int				*chunk(int len);
+
+void			algo(int ac, char **arr);
 
 t_stack			*init_astack(int ac, char **av);
 

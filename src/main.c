@@ -6,7 +6,7 @@
 /*   By: redrouic <redrouic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/04 19:24:23 by redrouic          #+#    #+#             */
-/*   Updated: 2024/04/07 23:27:25 by redrouic         ###   ########.fr       */
+/*   Updated: 2024/05/27 15:00:43 by redrouic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,11 +40,13 @@ static int	sign_valid(int ac, char **av)
 static int	is_double(int ac, char **av, int nb, int index)
 {
 	int	i;
+	int	*error;
 
+	error = 0;
 	i = 1;
 	while (i < ac)
 	{
-		if (i != index && ft_atoi(av[i]) == nb)
+		if (i != index && ft_atoi(av[i], error) == nb)
 			return (1);
 		i++;
 	}
@@ -54,11 +56,13 @@ static int	is_double(int ac, char **av, int nb, int index)
 static int	gest_err(int ac, char **av)
 {
 	long long int	tmp;
+	int				error;
 	int				i;
 	int				j;
 
 	i = 1;
 	j = 0;
+	error = 0;
 	if (!sign_valid(ac, av))
 		return (1);
 	while (i < ac)
@@ -70,69 +74,14 @@ static int	gest_err(int ac, char **av)
 			j++;
 		}
 		j = 0;
-		tmp = ft_atoi(av[i]);
-		if (tmp > MAX_INT || tmp < MAX_NEG)
+		tmp = ft_atoi(av[i], &error);
+		if (error == 1)	
 			return (1);
 		if (is_double(ac, av, tmp, i))
 			return (1);
 		i++;
 	}
 	return (0);
-}
-
-static void	algo(int ac, char **arr)
-{
-	t_stack	*astack;
-	t_stack	*bstack;
-	int		*test;
-	int		mid;
-	int		pcount;
-	int		rcount;
-	int		len;
-
-	pcount = 0;
-	rcount = 0;
-	astack = NULL;
-	bstack = NULL;
-	astack = init_astack(ac, arr);
-	if (is_sorted(astack))
-	{
-		ft_putstr("OK\n");
-		return ;
-	}
-	move2b(&astack, &bstack);
-	if (!is_sorted(astack))
-		rotate(&astack, 'a');
-	test = chunk(ac); 
-	test++;
-	while (*test)
-	{
-		if (*test == 1)
-		{
-			push(&bstack, &astack, 'a');
-			test++;
-			continue ;
-		}
-		if (*test == 2)
-		{
-			if (bstack->data < bstack->next->data)
-				swap(&bstack, 'b');
-			push(&bstack, &astack, 'a');
-			push(&bstack, &astack, 'a');
-			test++;
-			continue ;
-		}
-		if (*test > 2)
-		{
-			len = *test;
-			mid = midpoint(bstack, len);
-		}
-	}
-	ft_putstr("astack\n");
-	print_stack(astack);
-	ft_putstr("bstack\n");
-	print_stack(bstack);
-	return ;
 }
 
 int	main(int ac, char **av)
