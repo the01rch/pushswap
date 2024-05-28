@@ -6,7 +6,7 @@
 /*   By: redrouic <redrouic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/15 14:02:39 by redrouic          #+#    #+#             */
-/*   Updated: 2024/05/27 16:38:37 by redrouic         ###   ########.fr       */
+/*   Updated: 2024/05/28 17:44:55 by redrouic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,10 @@ void	chunk_of_two(t_stack **astack, t_stack **bstack)
 	push(bstack, astack, 'a');
 }
 
-int	*chunk(int len)
+int size_chunk(int len)
 {
-	int *arr;
-	int size;
-	int i;
+	int	size;
+	int	i;
 
 	i = 1;
 	size = len / 2;
@@ -34,6 +33,15 @@ int	*chunk(int len)
 		size /= 2;
 		i++;
 	}
+	return (i);
+}
+
+int	*chunk(int len)
+{
+	int *arr;
+	int i;
+
+	i = size_chunk(len);
 	arr = malloc(sizeof(int) * i);
 	if (!arr)
 		return (0);
@@ -62,7 +70,7 @@ int	is_biggest(t_stack *stack, int mid, int len)
 	}
 	return (1);
 }
-/*
+
 void	move2a(t_stack **astack, t_stack **bstack, int len)
 {
 	int	mid;
@@ -70,39 +78,36 @@ void	move2a(t_stack **astack, t_stack **bstack, int len)
 	int	i;
 
 	i = 0;
-	(void)bstack;
-	mid = midpoint(*astack, len);
+	mid = midpoint(*bstack, len);
 	size = len;
-	return ;
 	while (size > 2)
 	{
-		if ((*astack)->data > mid)
+		if ((*bstack)->data > mid)
 		{
-			push(astack, bstack, 'a');
+			push(bstack, astack, 'a');
 			i++;
 		}
-		else if ((*astack)->data <= mid && is_biggest(*astack, mid, size))
-			rev_rotate(astack, 'b');
-		else if ((*astack)->data <= mid)
-			rotate(astack, 'b');
-		if (i == size / 2)
+		else if ((*bstack)->data <= mid && is_biggest(*bstack, mid, size))
+			rev_rotate(bstack, 'b');
+		else if ((*bstack)->data <= mid)
+			rotate(bstack, 'b');
+		if (i <= (size / 2) + 1)
 		{
 			size = size - i;
 			i = 0;
-			mid = midpoint(*astack, size);
+			mid = midpoint(*bstack, size);
 		}
 	}
 }
-*/
 
 void	algo(int ac, char **arr)
 {
 	t_stack	*astack;
 	t_stack	*bstack;
 	int		*test;
-	int		mid;
+	int		i;
 
-	(void)mid;
+	i = 1;
 	astack = NULL;
 	bstack = NULL;
 	astack = init_astack(ac, arr);
@@ -115,40 +120,27 @@ void	algo(int ac, char **arr)
 	if (!is_sorted(astack))
 		rotate(&astack, 'a');
 	test = chunk(ac); 
-	test++;
-	while (*test)
+	while (i <= size_chunk(ac))
 	{
-		if (*test == 1)
+		if (test[i] == 1)
 		{
 			push(&bstack, &astack, 'a');
-			printf("we we \n");
-			test++;
+			i++;
 			continue ;
 		}
-		if (*test == 2)
+		if (test[i] == 2)
 		{
-			chunk_of_two(&bstack, &astack);
-			test++;
+			chunk_of_two(&astack, &bstack);
+			i++;
 			continue ;
 		}
-		if (*test > 2)
+		if (test[i] > 2)
 		{
-			//mid = midpoint(bstack, *test);
-			printf("test : %d\n", *test);
-			ft_putstr("==bstack==\n");
-			print_stack(bstack);
-			ft_putstr("==astack==\n");
-			print_stack(astack);
-			//move2a(&bstack, &astack, *test);
-			//chunk_of_two(&bstack, &astack);
-			//test++;
-			//continue ;
-			return ;
+			move2a(&astack, &bstack, test[i]);
+			chunk_of_two(&astack, &bstack);
+			i++;
+			continue ;
 		}
 	}
-	ft_putstr("astack\n");
-	print_stack(astack);
-	ft_putstr("bstack\n");
-	print_stack(bstack);
 	return ;
 }

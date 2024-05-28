@@ -6,7 +6,7 @@
 /*   By: redrouic <redrouic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 16:41:04 by redrouic          #+#    #+#             */
-/*   Updated: 2024/05/27 16:31:06 by redrouic         ###   ########.fr       */
+/*   Updated: 2024/05/28 14:28:13 by redrouic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	*create_arr(int size, t_stack *stack)
 	if (!new)
 		return (0);
 	i = 0;
-	while (stack)
+	while (i < size)
 	{
 		new[i] = stack->data;
 		stack = stack->next;
