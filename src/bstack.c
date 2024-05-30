@@ -6,7 +6,7 @@
 /*   By: redrouic <redrouic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/15 14:02:39 by redrouic          #+#    #+#             */
-/*   Updated: 2024/05/28 17:44:55 by redrouic         ###   ########.fr       */
+/*   Updated: 2024/05/29 16:06:43 by redrouic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,14 +70,34 @@ int	is_biggest(t_stack *stack, int mid, int len)
 	}
 	return (1);
 }
+/*
+int	is_desorted(t_stack *stack, int len)
+{
+	t_stack	*tmp;
+	int	i;
+
+	i = 0;
+	tmp = stack;
+	while (i < len)
+	{
+		if (tmp->data < tmp->next->data)
+			return (0);
+		tmp = tmp->next;
+		i++;
+	}
+	return (1);
+}
+*/
 
 void	move2a(t_stack **astack, t_stack **bstack, int len)
 {
 	int	mid;
 	int	size;
 	int	i;
+	int	rrb;
 
 	i = 0;
+	rrb = 0;
 	mid = midpoint(*bstack, len);
 	size = len;
 	while (size > 2)
@@ -90,13 +110,22 @@ void	move2a(t_stack **astack, t_stack **bstack, int len)
 		else if ((*bstack)->data <= mid && is_biggest(*bstack, mid, size))
 			rev_rotate(bstack, 'b');
 		else if ((*bstack)->data <= mid)
+		{
 			rotate(bstack, 'b');
-		if (i <= (size / 2) + 1)
+			rrb++;
+		}
+		if (i >= (size / 2) - 1)
 		{
 			size = size - i;
 			i = 0;
+//			if (!is_desorted(*bstack, size))
 			mid = midpoint(*bstack, size);
 		}
+	}
+	while (rrb > 0)
+	{
+		rev_rotate(bstack, 'b');
+		rrb--;
 	}
 }
 
@@ -112,10 +141,7 @@ void	algo(int ac, char **arr)
 	bstack = NULL;
 	astack = init_astack(ac, arr);
 	if (is_sorted(astack))
-	{
-		ft_putstr("OK\n");
 		return ;
-	}
 	move2b(&astack, &bstack);
 	if (!is_sorted(astack))
 		rotate(&astack, 'a');

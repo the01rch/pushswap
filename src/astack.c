@@ -6,7 +6,7 @@
 /*   By: redrouic <redrouic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 17:55:44 by redrouic          #+#    #+#             */
-/*   Updated: 2024/05/27 14:22:38 by redrouic         ###   ########.fr       */
+/*   Updated: 2024/05/29 14:49:07 by redrouic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,13 @@ t_stack	*init_astack(int ac, char **av)
 	t_stack	*astack;
 	t_stack	*tmp;
 	int		i;
-	int		*error;
 
-	error = 0;
 	i = ac - 1;
 	astack = NULL;
 	while (i > -1)
 	{
 		tmp = (t_stack *)malloc(sizeof(t_stack));
-		tmp->data = ft_atoi(av[i], error);
+		tmp->data = ft_atoi(av[i]);
 		tmp->next = astack;
 		astack = tmp;
 		i--;

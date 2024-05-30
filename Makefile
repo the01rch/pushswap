@@ -6,7 +6,7 @@
 #    By: redrouic <redrouic@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/04 19:41:59 by redrouic          #+#    #+#              #
-#    Updated: 2024/05/02 16:40:00 by redrouic         ###   ########.fr        #
+#    Updated: 2024/05/28 23:44:39 by redrouic         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ CC	=	gcc
 
 OBJ	=	$(SRC:.c=.o)
 
-NAME	=	pushswap
+NAME	=	push_swap
 
 CFLAGS	+=	-Wall -Wextra -Werror -g3
 

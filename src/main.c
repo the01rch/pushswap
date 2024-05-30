@@ -6,12 +6,13 @@
 /*   By: redrouic <redrouic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/04 19:24:23 by redrouic          #+#    #+#             */
-/*   Updated: 2024/05/27 15:00:43 by redrouic         ###   ########.fr       */
+/*   Updated: 2024/05/29 14:57:35 by redrouic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../icl/pushswap.h"
 
+/*
 static int	sign_valid(int ac, char **av)
 {
 	int	sign;
@@ -37,16 +38,15 @@ static int	sign_valid(int ac, char **av)
 	return (1);
 }
 
+*/
 static int	is_double(int ac, char **av, int nb, int index)
 {
 	int	i;
-	int	*error;
 
-	error = 0;
 	i = 1;
 	while (i < ac)
 	{
-		if (i != index && ft_atoi(av[i], error) == nb)
+		if (i != index && ft_atoi(av[i]) == nb)
 			return (1);
 		i++;
 	}
@@ -56,15 +56,13 @@ static int	is_double(int ac, char **av, int nb, int index)
 static int	gest_err(int ac, char **av)
 {
 	long long int	tmp;
-	int				error;
 	int				i;
 	int				j;
 
 	i = 1;
 	j = 0;
-	error = 0;
-	if (!sign_valid(ac, av))
-		return (1);
+//	if (!sign_valid(ac, av))
+//		return (1);
 	while (i < ac)
 	{
 		while (av[i][j])
@@ -74,8 +72,8 @@ static int	gest_err(int ac, char **av)
 			j++;
 		}
 		j = 0;
-		tmp = ft_atoi(av[i], &error);
-		if (error == 1)	
+		tmp = ft_atoi(av[i]);
+		if (tmp == 0)	
 			return (1);
 		if (is_double(ac, av, tmp, i))
 			return (1);
