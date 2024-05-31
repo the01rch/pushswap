@@ -6,7 +6,7 @@
 /*   By: redrouic <redrouic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/15 14:02:39 by redrouic          #+#    #+#             */
-/*   Updated: 2024/05/29 16:06:43 by redrouic         ###   ########.fr       */
+/*   Updated: 2024/05/30 18:44:18 by redrouic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ int	is_biggest(t_stack *stack, int mid, int len)
 	}
 	return (1);
 }
-/*
+
 int	is_desorted(t_stack *stack, int len)
 {
 	t_stack	*tmp;
@@ -87,7 +87,6 @@ int	is_desorted(t_stack *stack, int len)
 	}
 	return (1);
 }
-*/
 
 void	move2a(t_stack **astack, t_stack **bstack, int len)
 {
@@ -118,8 +117,11 @@ void	move2a(t_stack **astack, t_stack **bstack, int len)
 		{
 			size = size - i;
 			i = 0;
-//			if (!is_desorted(*bstack, size))
-			mid = midpoint(*bstack, size);
+			if (is_desorted(*bstack, size))
+			{
+				
+			}
+				mid = midpoint(*bstack, size);
 		}
 	}
 	while (rrb > 0)

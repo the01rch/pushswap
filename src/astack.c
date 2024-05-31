@@ -6,7 +6,7 @@
 /*   By: redrouic <redrouic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 17:55:44 by redrouic          #+#    #+#             */
-/*   Updated: 2024/05/29 14:49:07 by redrouic         ###   ########.fr       */
+/*   Updated: 2024/05/30 18:27:24 by redrouic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,20 +41,6 @@ int	is_smallest(t_stack *stack, int value)
 	if (tmp->data < value)
 		return (1);
 	return (0);
-}
-
-#include <stdio.h>
-void	print_stack(t_stack *stack)
-{
-	int	i;
-
-	i = 0;
-	while (stack)
-	{
-		printf("%d-data: %d\n", i, stack->data);
-		stack = stack->next;
-		i++;
-	}
 }
 
 int	is_sorted(t_stack *stack)
