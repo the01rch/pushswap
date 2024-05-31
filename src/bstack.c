@@ -6,7 +6,7 @@
 /*   By: redrouic <redrouic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/15 14:02:39 by redrouic          #+#    #+#             */
-/*   Updated: 2024/05/30 18:44:18 by redrouic         ###   ########.fr       */
+/*   Updated: 2024/05/31 15:54:37 by redrouic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int	*chunk(int len)
 	int i;
 
 	i = size_chunk(len);
-	arr = malloc(sizeof(int) * i);
+	arr = malloc(sizeof(int) * (i + 1));
 	if (!arr)
 		return (0);
 	while (i >= 0)
@@ -94,11 +94,13 @@ void	move2a(t_stack **astack, t_stack **bstack, int len)
 	int	size;
 	int	i;
 	int	rrb;
+	int	u;
 
 	i = 0;
 	rrb = 0;
 	mid = midpoint(*bstack, len);
 	size = len;
+	u = 0;
 	while (size > 2)
 	{
 		if ((*bstack)->data > mid)
@@ -119,8 +121,14 @@ void	move2a(t_stack **astack, t_stack **bstack, int len)
 			i = 0;
 			if (is_desorted(*bstack, size))
 			{
-				
+				while (u < size)	
+				{
+					u++;
+					push(bstack, astack, 'a');
+				}
+				u = 0;
 			}
+			else
 				mid = midpoint(*bstack, size);
 		}
 	}
@@ -148,6 +156,8 @@ void	algo(int ac, char **arr)
 	if (!is_sorted(astack))
 		rotate(&astack, 'a');
 	test = chunk(ac); 
+	if (!test)
+		return ;
 	while (i <= size_chunk(ac))
 	{
 		if (test[i] == 1)
