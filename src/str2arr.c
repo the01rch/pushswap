@@ -6,7 +6,7 @@
 /*   By: redrouic <redrouic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/16 17:25:21 by redrouic          #+#    #+#             */
-/*   Updated: 2024/03/29 21:58:42 by redrouic         ###   ########.fr       */
+/*   Updated: 2024/06/06 21:48:22 by redrouic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,8 @@ int	*count_cols(char *str, int rows)
 	int	y;
 	int	x;
 
+	if (rows == 0)
+		return (0);
 	cols = malloc(sizeof(int) * rows);
 	if (!cols)
 		return (0);
@@ -69,20 +71,23 @@ char	**init_arr(char *str)
 	int		*cols;
 	int		rows;
 	int		y;
+	int		x;
 
 	rows = count_rows(str);
-	if (rows == 0)
+	cols = count_cols(str, rows);
+	if (!cols)
 		return (0);
 	arr = malloc(sizeof(char *) * (rows + 1));
 	if (!arr)
 		return (0);
-	cols = count_cols(str, rows);
-	if (!cols)
-		return (0);
 	y = 0;
+	x = 0;
 	while (y < rows)
 	{
 		arr[y] = malloc(sizeof(char) * (cols[y] + 1));
+		while (x <= cols[y])
+			arr[y][x++] = '\0';
+		x = 0;
 		y++;
 	}
 	free(cols);

@@ -6,7 +6,7 @@
 /*   By: redrouic <redrouic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 20:32:01 by redrouic          #+#    #+#             */
-/*   Updated: 2024/05/29 15:24:04 by redrouic         ###   ########.fr       */
+/*   Updated: 2024/07/13 19:40:02 by redrouic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ long long int	ft_atoi(const char *nptr)
 			sign *= -1;
 		nptr++;
 	}
-	while (*nptr >= '0' && *nptr <= '9' 
+	while (*nptr >= '0' && *nptr <= '9'
 		&& b < MAX_INT && b > MAX_NEG)
 	{
 		b = b * 10 + (*nptr - 48);
